@@ -30,7 +30,24 @@ jobs:
           docker push eunhomoon/docker-frontend
           docker push eunhomoon/docker-nginx
           docker push eunhomoon/docker-backend
-          
-      - name: Pull Docker images
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: <AWS_리전>
+
+      - name: Configure Elastic Beanstalk
         run: |
-          docker-compose -f ./docker-compose.yml pull
+          eb init -p docker docker-fullstack-app --region ap-northeast-2
+          eb use Docker-fullstack-env
+
+#       - name: Copy Docker Compose file
+#         run: |
+#           cp <로컬_경로_및_파일명> .
+#           mv <파일명> docker-compose.yml
+
+#       - name: Deploy to Elastic Beanstalk
+#         run: eb deploy
+
