@@ -7,18 +7,27 @@ const app = express();
 
 app.use(bodyParser.json());
 
-// db.pool.query(
-//   `
-//     CREATE TABLE lists (
-//         id INTEGER AUTO_INCREMENT,
-//         value TEXT,
-//         PRIMARY KEY (id)
-//     )
-//   `,
-//   (err, results, fields) => {
-//     console.log(results);
-//   }
-// );
+db.pool.query(
+  `
+  CREATE DATABASE myapp;
+  `,
+  (err, results, fields) => {
+    console.log(results);
+  }
+);
+
+db.pool.query(
+  `
+    CREATE TABLE myapp.lists (
+        id INTEGER AUTO_INCREMENT,
+        value TEXT,
+        PRIMARY KEY (id)
+    )
+  `,
+  (err, results, fields) => {
+    console.log(results);
+  }
+);
 
 app.get('/api/values', (req, res) => {
   db.pool.query('SELECT * FROM lists;', (err, results, fields) => {
