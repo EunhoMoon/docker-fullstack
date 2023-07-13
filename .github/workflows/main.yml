@@ -47,10 +47,11 @@ jobs:
         run: |
           eb init -p docker docker-fullstack-app --region ap-northeast-2
           eb use Docker-fullstack-env
-
-#       - name: Copy Docker Compose file
-#         run: |
-#           mv docker-compose.yml docker-compose.yml
+          
+      - name: Copy Docker Compose file
+        run: mv docker-compose.yml docker-compose.yml
+        #  cp ./docker-compose.yml .
+          
 
       - name: Deploy to Elastic Beanstalk
         run: eb deploy
