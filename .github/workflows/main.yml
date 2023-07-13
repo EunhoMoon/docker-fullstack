@@ -25,4 +25,6 @@ jobs:
       - name: Build and push Docker images
         run: |
           docker-compose -f docker-compose.yml build
-          docker-compose -f docker-compose.yml push
+          docker push eunhomoon/docker-fullstack_frontend:latest
+          docker push eunhomoon/docker-fullstack_nginx:latest
+          docker push eunhomoon/docker-fullstack_backend:latest
