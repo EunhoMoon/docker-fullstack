@@ -16,6 +16,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        file: ${{ fromYaml(env.DOCKERFILE_PATHS) }}
 
     steps:
     - uses: actions/checkout@v3
