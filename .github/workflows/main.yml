@@ -13,9 +13,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Build and push Docker images
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./docker-compose.yml
-          push: false
+      - name: Set up Docker Compose
+        run: docker-compose up -d
+
+#       - name: Build and push Docker images
+#         uses: docker/build-push-action@v2
+#         with:
+#           context: .
+#           push: true
