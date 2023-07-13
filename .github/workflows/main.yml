@@ -1,33 +1,22 @@
-name: Docker Image CI
+name: Docker Compose Build
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-    
-env:
-  IMAGE_NAME: eunhomoon/docker-fullstack
-  DOCKERFILE_PATHS: |
-    ./backend/Dockerfile
-    ./frontend/Dockerfile
+    branches:
+      - main  # 또는 빌드를 트리거할 브랜치
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        file: ${{fromYaml(env.DOCKERFILE_PATHS)}}
+    runs-on: ubuntu-latest  # 실행 환경 선택
 
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Build the Docker image
-      uses: docker/build-push-actions@v2
-      with:
-        context: ./
-        dockerfile: ${{ matrix.file }}
-        push: false
-        tags: ${{ env.IMAGE_NAME }}:${{ matrix:file }}
+    - name: Checkout Repository
+      uses: actions/checkout@v2  # 저장소 체크아웃
+
+    - name: Set up Docker Compose
+      uses: docker/compose-cli@v1  # Docker Compose 설치
+
+    - name: Build and Push Docker Images
+      run: |
+        export DOCKER_BUILDKIT=1
+        docker compose build
