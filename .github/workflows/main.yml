@@ -9,8 +9,8 @@ on:
 env:
   IMAGE_NAME: eunhomoon/docker-fullstack
   DOCKERFILE_PATHS: |
-    backend/Dockerfile
-    frontend/Dockerfile
+    ./backend/Dockerfile
+    ./frontend/Dockerfile
 
 jobs:
   build:
