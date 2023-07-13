@@ -30,3 +30,7 @@ jobs:
           docker push eunhomoon/docker-frontend
           docker push eunhomoon/docker-nginx
           docker push eunhomoon/docker-backend
+          
+      - name: Pull Docker images
+        run: |
+          docker-compose -f ./docker-compose.yml pull
