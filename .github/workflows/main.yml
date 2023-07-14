@@ -42,6 +42,10 @@ jobs:
         run: |
           pip install awsebcli --upgrade --user
           echo 'export PATH="$PATH:$HOME/.local/bin"' >> $GITHUB_ENV
+          
+      - name: Copy Docker Compose file
+        run: mv docker-compose.yml docker-compose.yml
+        #  cp ./docker-compose.yml .
 
       - name: Deploy to Elastic Beanstalk
         run: |
@@ -53,9 +57,6 @@ jobs:
 #           sudo apt-get install -y python3-pip
 #           sudo pip3 install awsebcli --upgrade
 
-#       - name: Copy Docker Compose file
-#         run: mv docker-compose.yml docker-compose.yml
-#         #  cp ./docker-compose.yml .
           
 
 #       - name: Deploy to Elastic Beanstalk
