@@ -44,8 +44,7 @@ jobs:
           echo 'export PATH="$PATH:$HOME/.local/bin"' >> $GITHUB_ENV
           
       - name: Copy Docker Compose file
-        run: mv docker-compose.yml docker-compose.yml
-        #  cp ./docker-compose.yml .
+        run: cp ./docker-compose.yml .
 
       - name: Deploy to Elastic Beanstalk
         run: |
