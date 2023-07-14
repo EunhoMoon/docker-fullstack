@@ -45,8 +45,8 @@ jobs:
 
       - name: Deploy to Elastic Beanstalk
         run: |
-          eb init -p docker docker-fullstack-app --region ap-northeast-2
-          eb use Docker-fullstack-app-env
+          eb init -p docker fullstack-app --region ap-northeast-2
+          eb use Fullstack-app-env
           
 #       - name: Install and configure AWS CLI
 #         run: |
