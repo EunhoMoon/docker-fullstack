@@ -44,5 +44,5 @@ jobs:
           sudo pip3 install awsebcli --upgrade
       - name: Configure Elastic Beanstalk
         run: |
-          eb init -p docker fullstack-app --region ap-northeast-2
-          eb use Fullstack-app-env
+          eb init -p docker docker-app --region ap-northeast-2
+          eb use Docker-app-env
