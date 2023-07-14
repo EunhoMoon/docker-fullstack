@@ -7,6 +7,7 @@ services:
       - ./frontend:/app
     stdin_open: true
     mem_limit: 128m
+    platform: linux/amd64
 
   nginx:
     restart: always
@@ -17,6 +18,7 @@ services:
     links:
       - frontend
       - backend
+    platform: linux/amd64
 
   backend:
     image: eunhomoon/docker-backend
@@ -25,12 +27,13 @@ services:
       - /app/node_modules
       - ./backend:/app
     environment:
-      MYSQL_HOST: awseb-e-ugtxnctrew-stack-awsebrdsdatabase-2ivmwlmghu1w.cr3d7ewbbf0v.ap-northeast-2.rds.amazonaws.com
+      MYSQL_HOST: docker-mysql-instance-1.cr3d7ewbbf0v.ap-northeast-2.rds.amazonaws.com
       MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: root1234
-      # MYSQL_DATABASE: myapp
+      MYSQL_DATABASE: myapp
       MYSQL_PORT: 3306
     mem_limit: 128m
+    platform: linux/amd64
 
   # mysql:
   #   build: ./mysql
