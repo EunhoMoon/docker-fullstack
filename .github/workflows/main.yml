@@ -46,16 +46,13 @@ jobs:
       - name: Deploy to Elastic Beanstalk
         run: |
           eb init -p docker docker-fullstack-app --region ap-northeast-2
-          eb use docker-fullstack-app-env
+          eb use Docker-fullstack-app-env
           
 #       - name: Install and configure AWS CLI
 #         run: |
 #           sudo apt-get install -y python3-pip
 #           sudo pip3 install awsebcli --upgrade
 
-#       - name: Copy Docker Compose file
-#         run: mv docker-compose.yml docker-compose.yml
-#         #  cp ./docker-compose.yml .
           
 
 #       - name: Deploy to Elastic Beanstalk
